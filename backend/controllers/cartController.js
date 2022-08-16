@@ -32,7 +32,7 @@ const updateCartProduct = asyncHandler(async (req, res) => {
   }
 
   // Logged in user is the owner of the product
-  if (cartProduct.user.toString() != user.id) {
+  if (cartProduct.user.toString() !== user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }

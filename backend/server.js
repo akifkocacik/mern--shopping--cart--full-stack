@@ -2,11 +2,13 @@ const express = require("express");
 const colors = require("colors");
 const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
+var bodyParser = require('body-parser');
 const port = process.env.PORT || 3000;
 
 connectDB();
 
 const app = express();
+app.use(bodyParser.json());
 
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/cart', require('./routes/cartRoutes'));

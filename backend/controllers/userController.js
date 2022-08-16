@@ -44,9 +44,8 @@ const loginUser = asyncHandler(async (req, res) => {
   // Check for user email
   const user = await User.findOne({ email });
 
-  // Check for user password
-  if (user && (await user.isValidPassword(password))) {
-    res.json({
+  if (password === user.password) {
+    return res.json({
       _id: user.id,
       name: user.name,
       email: user.email,

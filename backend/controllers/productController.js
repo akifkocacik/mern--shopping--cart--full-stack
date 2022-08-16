@@ -59,7 +59,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   await product.remove();
 
-  res.status(200).json({id: req.params.id});
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = { getProducts, updateProduct, deleteProduct, setProduct };
