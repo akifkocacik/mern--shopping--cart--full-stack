@@ -26,12 +26,14 @@ const HomePage = () => {
       console.log(message);
     }
 
-    //dispatch(getProducts());
+    dispatch(getProducts());
 
     return () => {
       dispatch(reset());
     };
-  }, [user, navigate, isError, message, dispatch]);
+  }, [user]);
+
+  // navigate, isError, message, dispatch
 
   if (isLoading) {
     return <Spinner />;
@@ -43,9 +45,8 @@ const HomePage = () => {
         <h1>Welcome {user && user.name} </h1>
         <p>Products Page</p>
       </section>
-      <ProductForm />
 
-      <section className="content">
+      <section style={{width: "100%"}}>
         {products.length > 0 ? (
           <div className="products">
             {products.map((product) => (
@@ -56,6 +57,8 @@ const HomePage = () => {
           <h3>No products found</h3>
         )}
       </section>
+
+      <ProductForm />
     </>
   );
 };

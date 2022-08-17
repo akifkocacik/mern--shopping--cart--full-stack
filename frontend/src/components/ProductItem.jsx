@@ -6,13 +6,9 @@ const ProductItem = ({ product }) => {
 
   return (
     <div className="product">
-      <div className="product-image">
-        <img src={product.image} alt={product.name} />
-      </div>
-      <div className="product-details">
-        <h3>{product.name}</h3>
+        <h2>{product.name}</h2>
         <p>{product.price}</p>
-      </div>
+        <img src={product.image} alt={product.name} />
       <button
         onClick={() => dispatch(deleteProduct(product._id))}
         className="close"

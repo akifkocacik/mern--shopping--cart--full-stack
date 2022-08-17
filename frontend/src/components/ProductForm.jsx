@@ -29,6 +29,7 @@ const ProductForm = () => {
         <div className="form-group">
           <label htmlFor="text">Product Name</label>
           <input
+            className="form-control"
             type="text"
             name="name"
             id="name"
@@ -45,6 +46,7 @@ const ProductForm = () => {
         <div className="form-group">
           <label htmlFor="number">Product Price</label>
           <input
+            className="form-control"
             type="number"
             name="price"
             id="price"
@@ -61,6 +63,7 @@ const ProductForm = () => {
         <div className="form-group">
           <label htmlFor="image">Product Image</label>
           <input
+            className="form-control"
             type="url"
             name="image"
             id="image"
