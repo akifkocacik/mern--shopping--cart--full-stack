@@ -14,9 +14,8 @@ export const createProduct = createAsyncThunk(
   "products/create",
   async (productData, thunkAPI) => {
     try {
-      const email = thunkAPI.getState().auth.user.email;
-      const password = thunkAPI.getState().auth.user.password;
-      return await productService.createProduct(productData, email,password);
+      const token = thunkAPI.getState().auth.user.token;
+      return await productService.createProduct(productData, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -34,9 +33,8 @@ export const getProducts = createAsyncThunk(
   "products/getAll",
   async (_, thunkAPI) => {
     try {
-      const email = thunkAPI.getState().auth.user.email;
-      const password = thunkAPI.getState().auth.user.password;
-      return await productService.getProducts(email,password);
+      const token = thunkAPI.getState().auth.user.token;
+      return await productService.getProducts(token);
     } catch (error) {
       const message =
         (error.response &&
@@ -54,9 +52,8 @@ export const deleteProduct = createAsyncThunk(
   "products/delete",
   async (id, thunkAPI) => {
     try {
-      const email = thunkAPI.getState().auth.user.email;
-      const password = thunkAPI.getState().auth.user.password;
-      return await productService.deleteProduct(id, email,password);
+      const token = thunkAPI.getState().auth.user.token;
+      return await productService.deleteProduct(id, token);
     } catch (error) {
       const message =
         (error.response &&

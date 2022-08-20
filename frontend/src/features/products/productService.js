@@ -3,11 +3,10 @@ import axios from "axios";
 const API_URL = "/api/products/";
 
 // Create new product
-const createProduct = async (productData, email, password) => {
+const createProduct = async (productData, token) => {
   const config = {
-    body: {
-      email: `${email}`,
-      password: `${password}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   };
   const response = await axios.post(API_URL, productData, config);
@@ -16,11 +15,10 @@ const createProduct = async (productData, email, password) => {
 };
 
 // Get user products
-const getProducts = async (email, password) => {
+const getProducts = async (token) => {
   const config = {
-    body: {
-      email: `${email}`,
-      password: `${password}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   };
   const response = await axios.get(API_URL, config);
@@ -29,11 +27,10 @@ const getProducts = async (email, password) => {
 };
 
 // Delete product
-const deleteProduct = async (id, email, password) => {
+const deleteProduct = async (id, token) => {
   const config = {
-    body: {
-      email: `${email}`,
-      password: `${password}`,
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
   };
   const response = await axios.delete(API_URL + id, config);
