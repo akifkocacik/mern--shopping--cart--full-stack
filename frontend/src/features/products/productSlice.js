@@ -14,8 +14,7 @@ export const createProduct = createAsyncThunk(
   "products/create",
   async (productData, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await productService.createProduct(productData, token);
+      return await productService.createProduct(productData);
     } catch (error) {
       const message =
         (error.response &&
@@ -33,8 +32,7 @@ export const getProducts = createAsyncThunk(
   "products/getAll",
   async (_, thunkAPI) => {
     try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await productService.getProducts(token);
+      return await productService.getProducts();
     } catch (error) {
       const message =
         (error.response &&
@@ -47,26 +45,7 @@ export const getProducts = createAsyncThunk(
   }
 );
 
-// Delete product
-export const deleteProduct = createAsyncThunk(
-  "products/delete",
-  async (id, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await productService.deleteProduct(id, token);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString();
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-export const productSlice = createSlice({
+export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
@@ -94,28 +73,8 @@ export const productSlice = createSlice({
       state.isSuccess = true;
       state.products = action.payload;
     });
-    builder.addCase(getProducts.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload;
-    });
-    builder.addCase(deleteProduct.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(deleteProduct.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSuccess = true;
-      state.products = state.products.filter(
-        (product) => product.id !== action.payload.id
-      );
-    });
-    builder.addCase(deleteProduct.rejected, (state, action) => {
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload;
-    });
   },
 });
 
-export const { reset } = productSlice.actions;
-export default productSlice.reducer;
+export const { reset } = productsSlice.actions;
+export default productsSlice.reducer;

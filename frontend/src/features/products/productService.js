@@ -3,10 +3,10 @@ import axios from "axios";
 const API_URL = "/api/products/";
 
 // Create new product
-const createProduct = async (productData, token) => {
+const createProduct = async (productData) => {
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
   };
   const response = await axios.post(API_URL, productData, config);
@@ -15,10 +15,10 @@ const createProduct = async (productData, token) => {
 };
 
 // Get user products
-const getProducts = async (token) => {
+const getProducts = async () => {
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
   };
   const response = await axios.get(API_URL, config);
@@ -26,22 +26,9 @@ const getProducts = async (token) => {
   return response.data;
 };
 
-// Delete product
-const deleteProduct = async (id, token) => {
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const response = await axios.delete(API_URL + id, config);
-
-  return response.data;
-};
-
 const productService = {
   createProduct,
   getProducts,
-  deleteProduct,
 };
 
 export default productService;

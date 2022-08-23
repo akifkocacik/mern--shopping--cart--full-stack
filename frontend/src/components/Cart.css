@@ -1,0 +1,50 @@
+.cart-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin: 0 auto;
+    width: 100%;
+}
+
+thead>tr>td {   
+    text-align: center;
+    text-decoration: underline;
+}
+
+tr, td {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #fff;
+}
+
+td>img {
+    width: 100px;
+    height:100px;
+}
+
+.up-btn {
+    background-color: green;
+    border: none;
+    color:white;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.down-btn {
+    background-color: red;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    html {
+        font-size: 8px;
+    }
+}
